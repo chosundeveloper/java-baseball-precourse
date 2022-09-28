@@ -42,20 +42,23 @@
 
 ### 게임
 | 게임 | game | 해당 프로그램을 지칭하는 말 |
-| 시작 | start | 게임을 시작한다. |
-| 종료 | end | 게임이 끝난다. |
-| 재시작 | restart | 게임이 종료하면 재시작을 선택할 수 있다. |
+| 시작하다 | start | 게임을 시작한다. |
+| 종료하다 | end | 게임을 종료한다. |
+| 게임 상태 | game status | 게임의 진행 현황 |
+| 게임종료 | stop | 게임이 종료된 상태이다. |
 | 게임중 | playing | 게임을 시작한 상태이다. |
 
 ### 투구
 | 투구 | pitching | 사용자가 컴퓨터의 숫자를 맞추기 위해 입력하는 값 |
+| 투구 영역 | pitching range | 3개의 투구의 모음 |
 | 투구 숫자 | pitching number | 사용자가 컴퓨터의 숫자를 맞추기 위해 입력하는 수 |
 | 투구 위치 | pitching location | 사용자가 컴퓨터의 숫자를 맞추기 위해 입력하는 자리수 |
 
-### 스트라이크 존
-| 스트라이크 존 | zone | 투구가 스트라이크를 하기 위해 맞춰야 하는 숫자와 위치를 의미 |
-| 스트라이크 존 숫자 | zone number | 스트라이크 존이 가지는 수 |
-| 스트라이크 존 위치 | zone location | 스트라이크 존이 가지는 위치 |
+### 존
+| 존 | zone | 투구의 스트라이크를 판정할 수 있는 것 |
+| 존 영역 | zone range | 3개의 존의 모음 |
+| 존 숫자 | zone number | 스트라이크 존이 가지는 수 |
+| 존 위치 | zone location | 스트라이크 존이 가지는 위치 |
 
 ### 판정
 | 심판 | referee | 투구와 스트라이크 존을 비교하여 판정하는 주체 |
@@ -65,3 +68,56 @@
 | 해당없음 | none | 하나의 투구가 스트라이크 존에 숫자 및 자리 모두가 맞지 않는 것 |
 | 아웃 | out | 세 개의 투구가 모두 스트라이크 판정을 받는 것을 의미한다. 게임이 종료된다. |
 | 낫싱 | nothing | 세 개의 투구가 스트라이크 존에 해당없음을 의미 |
+
+## 모델링
+
+### 게임
+#### 속성
+- `게임(game)`은 `상태(status)`를 가진다.
+#### 기능
+- `게임(game)`은 `시작(start)`를 할 수 있다.
+  - `게임(game)`을 `시작(start)`하면 `게임중(playing)` 상태가 된다. 
+- `게임(game)`은 `종료(end)` 할 수 있다.
+  - `게임(game)`을 `종료(start)`하면 `게임종료(stop)` 상태가 된다.
+
+### 투구
+#### 투구 영역
+##### 속성
+- `투구 영역(pitching range)`은 3개의 `투구(pitching)`을 갖는다.
+  - `투구 영역(pitching range)`는 중복된 `투구 숫자(pitching number)`를 가질 수 없다.
+  - `투구 영역(pitching range)`는 중복된 `투구 위치(pitching location)`를 가질 수 없다.
+#### 투구
+##### 속성
+- `투구(pitching)`는 `투구 숫자(pitching number)`와 `투구 위치(pitching location)`을 갖는다.
+- `투구 숫자(pitching number)`는 1 ~ 9 사이의 수다.
+- `투구 위치(pitching location)`은 1 ~ 3 사이의 수다.
+
+### 존
+#### 존 영역
+##### 속성
+- `존 영역(zone range)`은 3개의 `스트라이크 존(zone)`을 갖는다.
+  - `존 영역(zone range)`은 중복된 `스트라이크 존 숫자(zone number)`를 가질 수 없다.  
+  - `존 영역(zone range)`은 중복된 `스트라이크 존 위치(zone location)`를 가질 수 없다.
+#### 스트라이크 존 
+##### 속성
+- `존(zone)`은 `존 숫자(zone number)`와 `존 위치(zone location)`을 갖는다.
+  - `존 숫자(zone number)`는 1 ~ 9 사이의 수다.
+  - `존 위치(zone location)`은 1 ~ 3 사이의 수다.
+
+### 심판
+#### 속성
+- `심판(referee)`은 `투구 영역(pitching range)`과  `스트라이크 존 영역(zone range)`을 가진다.
+#### 기능
+- `심판(referee)`은 `투구(pitching)`를 `판정(judge)`할 수 있다.
+  - `투구 숫자(pitching number)`가 `존 영역(zone range)`의 `존 숫자(zone number)`에 존재하고 `투구 위치(pitching location)`와 `존 위치(zone location)`가 같으면 스트라이크로 판정한다.
+  - `투구 숫자(pitching number)`가 `존 영역(zone range)`의 `존 숫자(zone number)`에 존재하고 `투구 위치(pitching location)`와 `존 위치(zone location)`가 다르면 볼로 판정한다.
+  - `투구 숫자(pitching number)`가 `존 영역(zone range)`의 `존 숫자(zone number)`에 존재하지 않으면 `해당없음(none)`으로 판정한다.
+- `심판(referee)`은 `투구 영역(pitching range)`을 `판정(judge)`할 수 있다.
+  - `투구 영역(pitching range)`의 `스트라이크(strike)`의 수가 하나이고 `볼(ball)`이 0개이면 1스트라이크로 판정한다.
+  - `투구 영역(pitching range)`의 `스트라이크(strike)`의 수가 하나이고 `볼(ball)`이 1개이면 1볼 1스트라이크로 판정한다.
+  - `투구 영역(pitching range)`의 `스트라이크(strike)`의 수가 하나이고 `볼(ball)`이 2개이면 2볼 1스트라이크로 판정한다.
+  - `투구 영역(pitching range)`의 `스트라이크(strike)`의 수가 두개이고 `볼(ball)`이 0개이면 2스트라이크로 판정한다.
+  - `투구 영역(pitching range)`의 `스트라이크(strike)`의 수가 두개이고 `볼(ball)`이 1개이면 1볼 2스트라이크로 판정한다.
+  - `투구 영역(pitching range)`이 `스트라이크(strike)`의 수가 없고 `볼(ball)`이 3개이면 3볼로 판정한다.
+  - `투구 영역(pitching range)`이 `스트라이크(strike)`의 수가 세개이면 `아웃(out)`으로 판정한다.
+  - `투구 영역(pitching range)`이 모두 `해당없음(none)`이면 `낫싱(nothing)`을 판정한다.
