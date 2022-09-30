@@ -10,4 +10,12 @@ public class Pitching {
         this.pitchingLocation = pitchingLocation;
     }
 
+    public PitchingNumber pitchingNumber() {
+        return this.pitchingNumber;
+    }
+
+    public PitchingLocation pitchingLocation() {
+        return this.pitchingLocation;
+    }
+
 }
