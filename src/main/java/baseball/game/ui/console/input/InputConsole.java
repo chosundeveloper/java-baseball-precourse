@@ -6,11 +6,25 @@ public class InputConsole {
     public static char[] read() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        char[] array = input.toCharArray();
-        if (array.length > 3) {
-            throw new IllegalArgumentException();
+        validate(input);
+        return input.toCharArray();
+    }
+
+    private static void validate(String input) {
+        validateInputLength(input);
+        validateInputNumber(input);
+    }
+
+    private static void validateInputNumber(String input) {
+        if (!input.matches("^[1-9]+$")) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
-        return array;
+    }
+
+    private static void validateInputLength(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("3자리로 입력해주세요");
+        }
     }
 
     public static boolean askRestart() {
