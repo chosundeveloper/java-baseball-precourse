@@ -1,14 +1,14 @@
 ## 요구사항
 ### 시스템
-- [ ] 3자리의 수를 입력받는다.
-  - [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다
-  - [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야한다
-- [ ] 입력한 숫자에 대한 결과를 출력한다.
+- [x] 3자리의 수를 입력받는다.
+  - [x] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다
+  - [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야한다
+- [x] 입력한 숫자에 대한 결과를 출력한다.
 
 ### 게임
 - [x] 게임을 시작할 수 있다.
 - [x] 게임을 종료할 수 있다.
-- [ ] 게임이 종료되면 재시작을 선택할 수 있다.
+- [x] 게임이 종료되면 재시작을 선택할 수 있다.
 
 ### 볼
 - [x] 볼을 생성할 수 있다.
