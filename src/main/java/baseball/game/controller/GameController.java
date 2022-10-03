@@ -15,16 +15,32 @@ import java.math.BigDecimal;
 
 public class GameController {
 
-    public static void run(Game game) {
-        Zone zone = new Zone();
-        zone.generate();
+    public static void run() {
+        Game game = gameInit();
+        Zone zone = zoneInit();
         do {
             Referee referee = new Referee(zone, createPitching());
-            OutputConsole outputConsole = new OutputConsole(referee.judgeBallCount(), referee.judgeStrikeCount());
-            outputConsole.print();
+            printJudgement(referee);
             referee.judgeGame(game);
             restart(game, zone);
         } while (game.isPlaying());
+    }
+
+    private static void printJudgement(Referee referee) {
+        OutputConsole outputConsole = new OutputConsole(referee.judgeBallCount(), referee.judgeStrikeCount());
+        outputConsole.print();
+    }
+
+    private static Zone zoneInit() {
+        Zone zone = new Zone();
+        zone.generate();
+        return zone;
+    }
+
+    private static Game gameInit() {
+        Game game = new Game();
+        game.start();
+        return game;
     }
 
     private static Pitching createPitching() {
