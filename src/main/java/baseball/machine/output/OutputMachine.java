@@ -1,12 +1,14 @@
 package baseball.machine.output;
 
-public abstract class OutputMachine {
+public class OutputMachine {
 
     private final int ballCount;
     private final int strikeCount;
 
     protected static final String BALL = "볼";
     protected static final String STRIKE = "스트라이크";
+    protected static final String NOTHING = "낫싱";
+
 
 
     public OutputMachine(int ballCount, int strikeCount) {
@@ -22,40 +24,37 @@ public abstract class OutputMachine {
         return strikeCount;
     }
 
-    public static OutputMachine create(int ballCount, int strikeCount) {
-
-        if (ballCount == 0 && strikeCount == 0) {
-            return new Nothing(ballCount, strikeCount);
-        }
-        if (ballCount == 0 && strikeCount == 1) {
-            return new OneStrike(ballCount, strikeCount);
-        }
-        if (ballCount == 0 && strikeCount == 2) {
-            return new TwoStrike(ballCount, strikeCount);
-        }
-        if (ballCount == 0 && strikeCount == 3) {
-            return new ThreeStrike(ballCount, strikeCount);
-        }
-        if (ballCount == 1 && strikeCount == 0) {
-            return new OneBall(ballCount, strikeCount);
-        }
-        if (ballCount == 1 && strikeCount == 1) {
-            return new OneBallOneStrike(ballCount, strikeCount);
-        }
-        if (ballCount == 1 && strikeCount == 2) {
-            return new OneBallTwoStrike(ballCount, strikeCount);
-        }
-        if (ballCount == 2 && strikeCount == 0) {
-            return new TwoBall(ballCount, strikeCount);
-        }
-        if (ballCount == 2 && strikeCount == 1) {
-            return new TwoBallOneStrike(ballCount, strikeCount);
-        }
-        if (ballCount == 3 && strikeCount == 0) {
-            return new ThreeBall(ballCount, strikeCount);
-        }
-        throw new IllegalArgumentException("해당하지 않습니다.");
+    public void print() {
+        String message = makeMessage();
+        System.out.println(message);
     }
 
-    public abstract void print();
+    private String makeMessage() {
+        int strikeCount = getStrikeCount();
+        int ballCount = getBallCount();
+
+        if (ballCount == 0 && strikeCount == 0) {
+            return NOTHING;
+        }
+
+        return ballMessage(ballCount) + strikeMessage(strikeCount);
+    }
+
+    private String ballMessage(int ballCount) {
+        if (ballCount == 0) {
+            return "";
+        }
+        return ballCount + BALL + " ";
+    }
+
+    private String strikeMessage(int strikeCount) {
+        if (strikeCount == 0) {
+            return "";
+        }
+        return strikeCount + STRIKE;
+    }
+
 }
+
+
+

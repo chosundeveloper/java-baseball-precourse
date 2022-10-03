@@ -17,10 +17,9 @@ public class GameRule {
         Zone zone = new Zone();
         zone.generate();
         do {
-            Pitching pitching = createPitching();
-            Referee referee = new Referee(zone, pitching);
-            OutputMachine judgementResult = OutputMachine.create(referee.judgeBallCount(), referee.judgeStrikeCount());
-            judgementResult.print();
+            Referee referee = new Referee(zone, createPitching());
+            OutputMachine outputMachine = new OutputMachine(referee.judgeBallCount(), referee.judgeStrikeCount());
+            outputMachine.print();
             referee.judgeGame(game);
             restart(game, zone);
         } while (game.isPlaying());
@@ -28,7 +27,6 @@ public class GameRule {
 
     private static Pitching createPitching() {
         char[] array = InputMachine.read();
-        System.out.println(array);
         Ball firstPitching = new Ball(new BallNumber(BigDecimal.valueOf(Integer.parseInt(String.valueOf(array[0])))), new BallLocation(BigDecimal.ONE));
         Ball secondPitching = new Ball(new BallNumber(BigDecimal.valueOf(Integer.parseInt(String.valueOf(array[1])))), new BallLocation(BigDecimal.valueOf(2)));
         Ball thirdPitching = new Ball(new BallNumber(BigDecimal.valueOf(Integer.parseInt(String.valueOf(array[2])))), new BallLocation(BigDecimal.valueOf(3)));
