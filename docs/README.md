@@ -24,11 +24,11 @@
     - [ ] 다른 투구와 위치가 같을 수 없다.
     
 ### 존
-- [ ] 존을 생성할 수 있다.
-  - [ ] 존의 볼 생성시 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다
-  - [ ] 존은 3개의 볼을 갖는다.
-  - [ ] 존은 다른 존과 숫자가 같을 수 없다.
-  - [ ] 존은 다른 존과 위치가 같을 수 없다.
+- [x] 존을 생성할 수 있다.
+  - [x] 존의 볼 생성시 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다
+  - [x] 존은 3개의 볼을 갖는다.
+  - [x] 존은 다른 존과 숫자가 같을 수 없다.
+  - [x] 존은 다른 존과 위치가 같을 수 없다.
 
 ### 판정
 - [ ] 심판이 게임을 판정할 수 있다.

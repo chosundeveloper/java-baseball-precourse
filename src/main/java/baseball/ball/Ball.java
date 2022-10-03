@@ -10,6 +10,14 @@ public class Ball {
         this.ballLocation = ballLocation;
     }
 
+    public BallNumber ballNumber() {
+        return this.ballNumber;
+    }
+
+    public BallLocation ballLocation() {
+        return this.ballLocation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
