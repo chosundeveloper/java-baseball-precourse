@@ -5,11 +5,9 @@ public class OutputMachine {
     private final int ballCount;
     private final int strikeCount;
 
-    protected static final String BALL = "볼";
-    protected static final String STRIKE = "스트라이크";
-    protected static final String NOTHING = "낫싱";
-
-
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
 
     public OutputMachine(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
