@@ -1,6 +1,6 @@
-package baseball.machine.output;
+package baseball.game.ui.console.output;
 
-public class OutputMachine {
+public class OutputConsole {
 
     private final int ballCount;
     private final int strikeCount;
@@ -9,7 +9,7 @@ public class OutputMachine {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
 
-    public OutputMachine(int ballCount, int strikeCount) {
+    public OutputConsole(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }

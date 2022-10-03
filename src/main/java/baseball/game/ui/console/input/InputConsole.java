@@ -1,8 +1,8 @@
-package baseball.machine.input;
+package baseball.game.ui.console.input;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputMachine {
+public class InputConsole {
     public static char[] read() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();

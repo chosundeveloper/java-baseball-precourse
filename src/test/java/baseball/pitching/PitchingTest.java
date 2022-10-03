@@ -1,8 +1,9 @@
 package baseball.pitching;
 
-import baseball.ball.Ball;
-import baseball.ball.BallLocation;
-import baseball.ball.BallNumber;
+import baseball.ball.domain.Ball;
+import baseball.ball.domain.BallLocation;
+import baseball.ball.domain.BallNumber;
+import baseball.pitching.domain.Pitching;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,8 @@
-package baseball.zone;
+package baseball.zone.domain;
 
-import baseball.ball.Ball;
-import baseball.ball.BallLocation;
-import baseball.ball.BallNumber;
+import baseball.ball.domain.Ball;
+import baseball.ball.domain.BallLocation;
+import baseball.ball.domain.BallNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.math.BigDecimal;

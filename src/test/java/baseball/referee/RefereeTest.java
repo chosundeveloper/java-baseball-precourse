@@ -1,12 +1,13 @@
 package baseball.referee;
 
 
-import baseball.ball.Ball;
-import baseball.ball.BallLocation;
-import baseball.ball.BallNumber;
-import baseball.game.Game;
-import baseball.pitching.Pitching;
-import baseball.zone.Zone;
+import baseball.ball.domain.Ball;
+import baseball.ball.domain.BallLocation;
+import baseball.ball.domain.BallNumber;
+import baseball.game.domain.Game;
+import baseball.pitching.domain.Pitching;
+import baseball.referee.domain.Referee;
+import baseball.zone.domain.Zone;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

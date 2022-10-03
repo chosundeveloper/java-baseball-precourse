@@ -1,14 +1,14 @@
 package baseball;
 
-import baseball.game.Game;
-import baseball.game.GameRule;
+import baseball.game.domain.Game;
+import baseball.game.controller.GameController;
 
 public class Application {
 
     public static void main(String[] args) {
         Game game = new Game();
         game.start();
-        GameRule.play(game);
+        GameController.run(game);
     }
 
 }

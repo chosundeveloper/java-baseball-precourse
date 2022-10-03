@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.domain;
 
 public class Game {
     private GameStatus status;

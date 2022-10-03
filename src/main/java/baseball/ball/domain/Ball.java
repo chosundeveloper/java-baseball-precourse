@@ -1,4 +1,4 @@
-package baseball.ball;
+package baseball.ball.domain;
 
 public class Ball {
 

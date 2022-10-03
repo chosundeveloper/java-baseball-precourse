@@ -1,5 +1,6 @@
-package baseball.machine.output;
+package baseball.game.console.output;
 
+import baseball.game.ui.console.output.OutputConsole;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +12,7 @@ import java.io.PrintStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("투구 영역 판정")
-class OutputMachineTest {
+class OutputConsoleTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
@@ -24,8 +25,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"0, 0"})
     void nothing(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("낫싱");
     }
 
@@ -33,8 +34,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"0, 1"})
     void oneStrike(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("1스트라이크");
     }
 
@@ -42,8 +43,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"0, 2"})
     void twoStrike(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("2스트라이크");
     }
 
@@ -51,8 +52,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"0, 3"})
     void out(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("3스트라이크");
     }
 
@@ -60,8 +61,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"1, 0"})
     void oneBall(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("1볼");
     }
 
@@ -69,8 +70,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"1, 1"})
     void oneBallOneStrike(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("1볼 1스트라이크");
     }
 
@@ -78,8 +79,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"1, 2"})
     void oneBall_twoStrike(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("1볼 2스트라이크");
     }
 
@@ -87,8 +88,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"2, 0"})
     void twoBall(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("2볼");
     }
 
@@ -96,8 +97,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"2, 1"})
     void twoBallOneStrike(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("2볼 1스트라이크");
     }
 
@@ -105,8 +106,8 @@ class OutputMachineTest {
     @ParameterizedTest
     @CsvSource({"3, 0"})
     void threeBall(int ballCount, int strikeCount) {
-        OutputMachine outputMachine = new OutputMachine(ballCount, strikeCount);
-        outputMachine.print();
+        OutputConsole outputConsole = new OutputConsole(ballCount, strikeCount);
+        outputConsole.print();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("3볼");
     }
 

@@ -1,9 +1,9 @@
-package baseball.referee;
+package baseball.referee.domain;
 
-import baseball.ball.Ball;
-import baseball.game.Game;
-import baseball.pitching.Pitching;
-import baseball.zone.Zone;
+import baseball.ball.domain.Ball;
+import baseball.game.domain.Game;
+import baseball.pitching.domain.Pitching;
+import baseball.zone.domain.Zone;
 
 public class Referee {
 

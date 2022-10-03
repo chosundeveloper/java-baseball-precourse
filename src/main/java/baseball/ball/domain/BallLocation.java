@@ -1,4 +1,4 @@
-package baseball.ball;
+package baseball.ball.domain;
 
 import java.math.BigDecimal;
 import java.util.Objects;

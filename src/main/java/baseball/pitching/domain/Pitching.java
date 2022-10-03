@@ -1,8 +1,8 @@
-package baseball.pitching;
+package baseball.pitching.domain;
 
-import baseball.ball.Ball;
-import baseball.ball.BallLocation;
-import baseball.ball.BallNumber;
+import baseball.ball.domain.Ball;
+import baseball.ball.domain.BallLocation;
+import baseball.ball.domain.BallNumber;
 
 import java.util.ArrayList;
 import java.util.List;
