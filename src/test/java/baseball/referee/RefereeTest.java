@@ -4,6 +4,7 @@ package baseball.referee;
 import baseball.ball.domain.Ball;
 import baseball.ball.domain.BallLocation;
 import baseball.ball.domain.BallNumber;
+import baseball.common.CharUtils;
 import baseball.game.domain.Game;
 import baseball.pitching.domain.Pitching;
 import baseball.referee.domain.Referee;
@@ -110,70 +111,70 @@ class RefereeTest {
 
     private static Stream<Arguments> oneStrike() {
         return Stream.of(
-                Arguments.arguments(createPitching(1, 1, 5, 2, 6, 3), 0),
-                Arguments.arguments(createPitching(4, 1, 2, 2, 5, 3), 0),
-                Arguments.arguments(createPitching(4, 1, 5, 2, 3, 3), 0)
+                Arguments.arguments(createPitching("156".toCharArray()), 0),
+                Arguments.arguments(createPitching("425".toCharArray()), 0),
+                Arguments.arguments(createPitching("453".toCharArray()), 0)
         );
     }
 
     private static Stream<Arguments> twoStrike() {
         return Stream.of(
-                Arguments.arguments(createPitching(1, 1, 2, 2, 5, 3), 0),
-                Arguments.arguments(createPitching(5, 1, 2, 2, 3, 3), 0),
-                Arguments.arguments(createPitching(1, 1, 5, 2, 3, 3), 0)
+                Arguments.arguments(createPitching("125".toCharArray()), 0),
+                Arguments.arguments(createPitching("523".toCharArray()), 0),
+                Arguments.arguments(createPitching("153".toCharArray()), 0)
         );
     }
 
     private static Stream<Arguments> threeStrike() {
         return Stream.of(
-                Arguments.arguments(createPitching(1, 1, 2, 2, 3, 3), 0)
+                Arguments.arguments(createPitching("123".toCharArray()), 0)
         );
     }
 
     private static Stream<Arguments> oneBall() {
         return Stream.of(
-                Arguments.arguments(createPitching(2, 1, 4, 2, 5, 3), 1),
-                Arguments.arguments(createPitching(4, 1, 3, 2, 5, 3), 1),
-                Arguments.arguments(createPitching(4, 1, 5, 2, 1, 3), 1)
+                Arguments.arguments(createPitching("245".toCharArray()), 1),
+                Arguments.arguments(createPitching("435".toCharArray()), 1),
+                Arguments.arguments(createPitching("451".toCharArray()), 1)
         );
     }
 
     private static Stream<Arguments> twoBall() {
         return Stream.of(
-                Arguments.arguments(createPitching(2, 1, 1, 2, 4, 3), 2),
-                Arguments.arguments(createPitching(3, 1, 4, 2, 1, 3), 2),
-                Arguments.arguments(createPitching(4, 1, 3, 2, 2, 3), 2)
+                Arguments.arguments(createPitching("214".toCharArray()), 2),
+                Arguments.arguments(createPitching("341".toCharArray()), 2),
+                Arguments.arguments(createPitching("432".toCharArray()), 2)
         );
     }
 
     private static Stream<Arguments> threeBall() {
         return Stream.of(
-                Arguments.arguments(createPitching(2, 1, 3, 2, 1, 3), 3)
+                Arguments.arguments(createPitching("231".toCharArray()), 3)
         );
     }
 
     private static Stream<Arguments> noBall() {
         return Stream.of(
-                Arguments.arguments(createPitching(4, 1, 5, 2, 6, 3), 0)
+                Arguments.arguments(createPitching("456".toCharArray()), 0)
         );
     }
 
     private static Stream<Arguments> noStrike() {
         return Stream.of(
-                Arguments.arguments(createPitching(4, 1, 5, 2, 6, 3), 0)
+                Arguments.arguments(createPitching("456".toCharArray()), 0)
         );
     }
 
-    private static Pitching createPitching(int firstBallNumber, int firstBallLocation, int secondBallNumber, int secondBallLocation, int thirdBallNumber, int thirdBallLocation) {
+    private static Pitching createPitching(char[] numbers) {
         Pitching pitching = new Pitching();
-        pitching.add(createBall(firstBallNumber, firstBallLocation));
-        pitching.add(createBall(secondBallNumber, secondBallLocation));
-        pitching.add(createBall(thirdBallNumber, thirdBallLocation));
+        for (char number : numbers) {
+            pitching.add(createBall(CharUtils.convertBigDecimal(number), pitching.pitchingBalls().size() + 1));
+        }
         return pitching;
     }
 
-    private static Ball createBall(int firstBallNumber, int firstBallLocation) {
-        return new Ball(new BallNumber(BigDecimal.valueOf(firstBallNumber)), new BallLocation(BigDecimal.valueOf(firstBallLocation)));
+    private static Ball createBall(BigDecimal firstBallNumber, int firstBallLocation) {
+        return new Ball(new BallNumber(firstBallNumber), new BallLocation(BigDecimal.valueOf(firstBallLocation)));
     }
 
 }

@@ -3,6 +3,7 @@ package baseball.game.controller;
 import baseball.ball.domain.Ball;
 import baseball.ball.domain.BallLocation;
 import baseball.ball.domain.BallNumber;
+import baseball.common.CharUtils;
 import baseball.game.domain.Game;
 import baseball.game.ui.console.input.InputConsole;
 import baseball.game.ui.console.output.OutputConsole;
@@ -28,13 +29,10 @@ public class GameController {
 
     private static Pitching createPitching() {
         char[] array = InputConsole.read();
-        Ball firstPitching = new Ball(new BallNumber(BigDecimal.valueOf(Integer.parseInt(String.valueOf(array[0])))), new BallLocation(BigDecimal.ONE));
-        Ball secondPitching = new Ball(new BallNumber(BigDecimal.valueOf(Integer.parseInt(String.valueOf(array[1])))), new BallLocation(BigDecimal.valueOf(2)));
-        Ball thirdPitching = new Ball(new BallNumber(BigDecimal.valueOf(Integer.parseInt(String.valueOf(array[2])))), new BallLocation(BigDecimal.valueOf(3)));
         Pitching pitching = new Pitching();
-        pitching.add(firstPitching);
-        pitching.add(secondPitching);
-        pitching.add(thirdPitching);
+        for (char number : array) {
+            pitching.add(new Ball(new BallNumber(CharUtils.convertBigDecimal(number)), new BallLocation(BigDecimal.valueOf(pitching.pitchingBalls().size() + 1))));
+        }
         return pitching;
     }
 
