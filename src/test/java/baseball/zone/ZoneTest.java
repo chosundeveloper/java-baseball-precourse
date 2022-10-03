@@ -1,7 +1,5 @@
 package baseball.zone;
 
-import baseball.ball.domain.Ball;
-import baseball.ball.domain.BallLocation;
 import baseball.ball.domain.BallNumber;
 import baseball.zone.domain.Zone;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayName("존")
@@ -31,7 +30,10 @@ class ZoneTest {
         zone.addZone(firstZoneNumber);
         BigDecimal secondZoneNumber = BigDecimal.ONE;
         zone.addZone(secondZoneNumber);
-        assertThat(zone.zones().size()).isEqualTo(1);
+        assertAll(
+                () -> assertThat(zone.zoneNumbers().contains(new BallNumber(BigDecimal.ONE))).isTrue(),
+                () -> assertThat(zone.zones().size()).isEqualTo(1)
+        );
     }
 
     @DisplayName("4개 이상의 존를 추가할 수 없다.")
@@ -42,7 +44,14 @@ class ZoneTest {
         zone.addZone(BigDecimal.valueOf(2));
         zone.addZone(BigDecimal.valueOf(3));
         zone.addZone(BigDecimal.valueOf(4));
-        assertThat(zone.zones().size()).isEqualTo(3);
+        assertAll(
+                () -> assertThat(zone.zoneNumbers().contains(new BallNumber(BigDecimal.ONE))).isTrue(),
+                () -> assertThat(zone.zoneNumbers().contains(new BallNumber(BigDecimal.valueOf(2)))).isTrue(),
+                () -> assertThat(zone.zoneNumbers().contains(new BallNumber(BigDecimal.valueOf(3)))).isTrue(),
+                () -> assertThat(zone.zoneNumbers().contains(new BallNumber(BigDecimal.valueOf(4)))).isFalse(),
+                () -> assertThat(zone.zoneNumbers().contains(new BallNumber(BigDecimal.ONE))).isTrue(),
+                () -> assertThat(zone.zones().size()).isEqualTo(3)
+        );
     }
 
 }
