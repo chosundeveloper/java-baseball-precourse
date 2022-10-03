@@ -15,4 +15,8 @@ public class Game {
     public GameStatus getStatus() {
         return status;
     }
+
+    public boolean isEnd() {
+        return this.status == GameStatus.STOP;
+    }
 }

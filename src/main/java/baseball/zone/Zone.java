@@ -43,4 +43,12 @@ public class Zone {
         return this.zoneBalls;
     }
 
+    public boolean isContainBall(Ball ball) {
+        return this.zoneBalls.contains(ball);
+    }
+
+    public boolean isContainBallNumber(BallNumber ballNumber) {
+        return this.zoneNumbers().contains(ballNumber);
+    }
+
 }
