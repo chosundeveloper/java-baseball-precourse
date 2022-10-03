@@ -1,5 +1,8 @@
 package baseball.zone;
 
+import baseball.ball.domain.Ball;
+import baseball.ball.domain.BallLocation;
+import baseball.ball.domain.BallNumber;
 import baseball.zone.domain.Zone;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayName("존")
 class ZoneTest {
@@ -15,7 +19,7 @@ class ZoneTest {
     @Test
     void createZone() {
         Zone zone = new Zone();
-        zone.generate();
+        assertDoesNotThrow(zone::generate);
         assertThat(zone.zones().size()).isEqualTo(3);
     }
 
