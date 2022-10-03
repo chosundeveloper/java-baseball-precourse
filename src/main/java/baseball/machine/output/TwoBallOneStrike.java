@@ -1,4 +1,4 @@
-package baseball.output;
+package baseball.machine.output;
 
 public class TwoBallOneStrike extends OutputMachine {
     public TwoBallOneStrike(int ballCount, int strikeCount) {

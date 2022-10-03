@@ -1,7 +1,7 @@
-package baseball.output;
+package baseball.machine.output;
 
-public class OneStrike extends OutputMachine {
-    public OneStrike(int ballCount, int strikeCount) {
+public class TwoStrike extends OutputMachine {
+    public TwoStrike(int ballCount, int strikeCount) {
         super(ballCount, strikeCount);
     }
 

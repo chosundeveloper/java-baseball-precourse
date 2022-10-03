@@ -1,4 +1,4 @@
-package baseball.output;
+package baseball.machine.output;
 
 public abstract class OutputMachine {
 
