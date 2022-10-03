@@ -11,7 +11,7 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("투구 영역 판정")
+@DisplayName("판정 결과 출력")
 class OutputConsoleTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
