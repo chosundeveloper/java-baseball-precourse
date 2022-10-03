@@ -1,7 +1,5 @@
 package baseball.game.domain;
 
-import baseball.game.domain.Game;
-import baseball.game.domain.GameStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
